@@ -28,21 +28,21 @@ type
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
     N2: TMenuItem;
-    SpeedButton•Û‘¶: TSpeedButton;
+    SpeedButtonä¿å­˜: TSpeedButton;
     SaveDialog1: TSaveDialog;
-    SpeedButton“Ç: TSpeedButton;
+    SpeedButtonèª­è¾¼: TSpeedButton;
     OpenDialog1: TOpenDialog;
     PageControl1: TPageControl;
-    TabSheet‰æ–Êİ’è: TTabSheet;
-    TabSheet‘JˆÚİ’è: TTabSheet;
-    Edit‰æ–Ê–¼: TEdit;
+    TabSheetç”»é¢è¨­å®š: TTabSheet;
+    TabSheeté·ç§»è¨­å®š: TTabSheet;
+    Editç”»é¢å: TEdit;
     Label1: TLabel;
     SpeedButtonSetBloxText: TSpeedButton;
-    Edit‘JˆÚğŒ: TEdit;
+    Edité·ç§»æ¡ä»¶: TEdit;
     Label2: TLabel;
     SpeedButtonSetLinkText: TSpeedButton;
-    LabelBoxŠJn: TLabel;
-    LabelBoxI—¹: TLabel;
+    LabelBoxé–‹å§‹: TLabel;
+    LabelBoxçµ‚äº†: TLabel;
     Splitter1: TSplitter;
     Splitter2: TSplitter;
     TMSFNCBloxNavigator1: TTMSFNCBloxNavigator;
@@ -50,8 +50,8 @@ type
     procedure N1Click(Sender: TObject);
     procedure TMSFNCBloxControl1ContextPopup(Sender: TObject; MousePos: TPoint; var Handled: Boolean);
     procedure N2Click(Sender: TObject);
-    procedure SpeedButton•Û‘¶Click(Sender: TObject);
-    procedure SpeedButton“ÇClick(Sender: TObject);
+    procedure SpeedButtonä¿å­˜Click(Sender: TObject);
+    procedure SpeedButtonèª­è¾¼Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButtonSetBloxTextClick(Sender: TObject);
     procedure SpeedButtonSetLinkTextClick(Sender: TObject);
@@ -59,17 +59,17 @@ type
       Element: TTMSFNCBloxElement; Button: TTMSFNCMouseButton;
       Shift: TShiftState; X, Y: Single);
     procedure Timer1Timer(Sender: TObject);
-    procedure Edit‘JˆÚğŒKeyDown(Sender: TObject; var Key: Word;
+    procedure Edité·ç§»æ¡ä»¶KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure Edit‰æ–Ê–¼KeyDown(Sender: TObject; var Key: Word;
+    procedure Editç”»é¢åKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
-    { Private éŒ¾ }
+    { Private å®£è¨€ }
     posX, posY : integer;
     selBox,selBox1,selBox2 : TTMSFNCBloxLinkableBlock;
     selLink : TTMSFNCBloxDFDDataFlowLine;
   public
-    { Public éŒ¾ }
+    { Public å®£è¨€ }
     procedure boxClicked(sender : TObject);
     procedure linkClicked(sender : TObject);
   end;
@@ -81,13 +81,13 @@ implementation
 
 {$R *.dfm}
 
-// ‰Šú‰»
+// åˆæœŸåŒ–
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   self.selBox := Nil; self.selBox1 := Nil; self.selBox2 := Nil; self.selLink := Nil;
 end;
 
-// ‰EƒNƒŠƒbƒN‚Ìƒ}ƒEƒXˆÊ’u
+// å³ã‚¯ãƒªãƒƒã‚¯æ™‚ã®ãƒã‚¦ã‚¹ä½ç½®
 procedure TForm1.TMSFNCBloxControl1ContextPopup(Sender: TObject;  MousePos: TPoint; var Handled: Boolean);
 var
   mouse_p: TPoint;
@@ -109,7 +109,7 @@ begin
  b.Height := 20;
  b.Width := 100;
  TMSFNCBloxControl1.Blox.Add(b);
- pageControl1.ActivePage := TabSheet‰æ–Êİ’è;
+ pageControl1.ActivePage := TabSheetç”»é¢è¨­å®š;
 end;
 
 procedure TForm1.N2Click(Sender: TObject);
@@ -122,7 +122,7 @@ begin
  l.Handles.items[1].OrX := posX+100;
  l.Handles.items[1].orY := posY+100;
  TMSFNCBloxControl1.Blox.Add(l);
- pageControl1.ActivePage := TabSheet‘JˆÚİ’è;
+ pageControl1.ActivePage := TabSheeté·ç§»è¨­å®š;
 end;
 
 procedure TForm1.TMSFNCBloxControl1ElementMouseUp(Sender: TObject;
@@ -142,45 +142,45 @@ begin
     self.selBox := TTMSFNCBloxLinkableBlock(sender);
     if self.selbox1 <> Nil then self.selBox2 := self.selBox1;
     self.selBox1 := self.selBox;
-    pageControl1.ActivePage := TabSheet‰æ–Êİ’è;
-    edit‰æ–Ê–¼.text := selBox.TextCells[0].Text;
+    pageControl1.ActivePage := TabSheetç”»é¢è¨­å®š;
+    editç”»é¢å.text := selBox.TextCells[0].Text;
 end;
 
 procedure TForm1.linkClicked(sender: TObject);
 var
- Anchorn, Anchor––: TTMSFNCBloxLinkableBlock;
+ Anchorå§‹, Anchoræœ«: TTMSFNCBloxLinkableBlock;
 begin
   self.selLink := TTMSFNCBloxDFDDataFlowLine(sender);
-  pageControl1.ActivePage := TabSheet‘JˆÚİ’è;
-  edit‘JˆÚğŒ.text := selLink.TextCells[0].Text;
-  anchorn := selLink.LinkPoints[0].Anchor as TTMSFNCBloxLinkableBlock;
-  anchor–– := selLink.LinkPoints[1].Anchor as TTMSFNCBloxLinkableBlock;
+  pageControl1.ActivePage := TabSheeté·ç§»è¨­å®š;
+  edité·ç§»æ¡ä»¶.text := selLink.TextCells[0].Text;
+  anchorå§‹ := selLink.LinkPoints[0].Anchor as TTMSFNCBloxLinkableBlock;
+  anchoræœ« := selLink.LinkPoints[1].Anchor as TTMSFNCBloxLinkableBlock;
 
-  labelBoxŠJn.Caption := '‘JˆÚŒ³:';
-  labelBoxI—¹.Caption := '‘JˆÚæ:';
-  if anchorn <> Nil then begin
-    labelBoxŠJn.Caption := '‘JˆÚŒ³:'+anchorn.TextCells[0].text;
+  labelBoxé–‹å§‹.Caption := 'é·ç§»å…ƒ:';
+  labelBoxçµ‚äº†.Caption := 'é·ç§»å…ˆ:';
+  if anchorå§‹ <> Nil then begin
+    labelBoxé–‹å§‹.Caption := 'é·ç§»å…ƒ:'+anchorå§‹.TextCells[0].text;
   end;
-  if anchor–– <> Nil then begin
-    labelBoxI—¹.Caption := '‘JˆÚæ:'+anchor––.TextCells[0].text;
+  if anchoræœ« <> Nil then begin
+    labelBoxçµ‚äº†.Caption := 'é·ç§»å…ˆ:'+anchoræœ«.TextCells[0].text;
   end;
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
 var
- Anchorn, Anchor––: TTMSFNCBloxLinkableBlock;
+ Anchorå§‹, Anchoræœ«: TTMSFNCBloxLinkableBlock;
 begin
   if selLink = Nil then exit;
   Timer1.Enabled := False;
-  anchorn := selLink.LinkPoints[0].Anchor as TTMSFNCBloxLinkableBlock;
-  anchor–– := selLink.LinkPoints[1].Anchor as TTMSFNCBloxLinkableBlock;
-  labelBoxŠJn.Caption := '‘JˆÚŒ³:';
-  labelBoxI—¹.Caption := '‘JˆÚæ:';
-  if anchorn <> Nil then begin
-    labelBoxŠJn.Caption := '‘JˆÚŒ³:'+anchorn.TextCells[0].text;
+  anchorå§‹ := selLink.LinkPoints[0].Anchor as TTMSFNCBloxLinkableBlock;
+  anchoræœ« := selLink.LinkPoints[1].Anchor as TTMSFNCBloxLinkableBlock;
+  labelBoxé–‹å§‹.Caption := 'é·ç§»å…ƒ:';
+  labelBoxçµ‚äº†.Caption := 'é·ç§»å…ˆ:';
+  if anchorå§‹ <> Nil then begin
+    labelBoxé–‹å§‹.Caption := 'é·ç§»å…ƒ:'+anchorå§‹.TextCells[0].text;
   end;
-  if anchor–– <> Nil then begin
-    labelBoxI—¹.Caption := '‘JˆÚæ:'+anchor––.TextCells[0].text;
+  if anchoræœ« <> Nil then begin
+    labelBoxçµ‚äº†.Caption := 'é·ç§»å…ˆ:'+anchoræœ«.TextCells[0].text;
   end;
   Timer1.Enabled := True;
 end;
@@ -189,11 +189,11 @@ procedure TForm1.SpeedButtonSetBloxTextClick(Sender: TObject);
 begin
  if selBox = Nil then exit;
  self.TMSFNCBloxControl1.BeginUpdate;
- selBox.TextCells[0].text := edit‰æ–Ê–¼.text;
+ selBox.TextCells[0].text := editç”»é¢å.text;
  self.TMSFNCBloxControl1.EndUpdate;
 end;
 
-procedure TForm1.Edit‰æ–Ê–¼KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TForm1.Editç”»é¢åKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
    if key = VK_RETURN then SpeedButtonSetBloxTextClick(Sender);
 end;
@@ -202,16 +202,16 @@ procedure TForm1.SpeedButtonSetLinkTextClick(Sender: TObject);
 begin
  if selLink = Nil then exit;
  self.TMSFNCBloxControl1.BeginUpdate;
- selLink.TextCells[0].text := edit‘JˆÚğŒ.text;
+ selLink.TextCells[0].text := edité·ç§»æ¡ä»¶.text;
  self.TMSFNCBloxControl1.EndUpdate;
 end;
 
-procedure TForm1.Edit‘JˆÚğŒKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TForm1.Edité·ç§»æ¡ä»¶KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
    if key = VK_RETURN then SpeedButtonSetLinkTextClick(Sender);
 end;
 
-procedure TForm1.SpeedButton•Û‘¶Click(Sender: TObject);
+procedure TForm1.SpeedButtonä¿å­˜Click(Sender: TObject);
 var
   fn : string;
 begin
@@ -220,7 +220,7 @@ begin
   TMSFNCBloxControl1.savetofile(fn);
 end;
 
-procedure TForm1.SpeedButton“ÇClick(Sender: TObject);
+procedure TForm1.SpeedButtonèª­è¾¼Click(Sender: TObject);
 var
   fn : string;
 begin
