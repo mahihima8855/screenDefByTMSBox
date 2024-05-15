@@ -1,0 +1,116 @@
+unit Unit1;
+
+interface
+
+uses
+VCL.TMSFNCBloxShapesDFD,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, VCL.TMSFNCTypes, VCL.TMSFNCUtils,
+  VCL.TMSFNCGraphics, VCL.TMSFNCGraphicsTypes, VCL.TMSFNCBloxCoreTypes,
+  VCL.TMSFNCBloxCoreUtils, VCL.TMSFNCBloxCoreLine, VCL.TMSFNCBloxCorePolygon,
+  VCL.TMSFNCBloxCoreTextCell, VCL.TMSFNCBloxCoreLineArrow,
+  VCL.TMSFNCBloxCoreLinkPoint, VCL.TMSFNCBloxCoreHandle,
+  VCL.TMSFNCBloxCoreGroup, VCL.TMSFNCBloxUISnapGrid, VCL.TMSFNCBloxCoreBlock,
+  VCL.TMSFNCBloxCoreElement, VCL.TMSFNCBloxUIRegistration,
+  VCL.TMSFNCBloxUIRenderer, VCL.TMSFNCCustomControl,
+  VCL.TMSFNCCustomScrollControl, VCL.TMSFNCBloxControl, Vcl.ExtCtrls,
+  Vcl.ComCtrls, Vcl.ToolWin, Vcl.Menus, VCL.TMSFNCBloxSelector,
+  VCL.TMSFNCBloxList, VCL.TMSFNCBloxToolBar, Vcl.Buttons;
+
+type
+  TForm1 = class(TForm)
+    ToolBar1: TToolBar;
+    StatusBar1: TStatusBar;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    TMSFNCBloxControl1: TTMSFNCBloxControl;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    SpeedButtonï€ë∂: TSpeedButton;
+    SaveDialog1: TSaveDialog;
+    SpeedButtonì«çû: TSpeedButton;
+    OpenDialog1: TOpenDialog;
+    PageControl1: TPageControl;
+    TabSheetâÊñ ê›íË: TTabSheet;
+    TabSheetëJà⁄ê›íË: TTabSheet;
+    procedure N1Click(Sender: TObject);
+    procedure TMSFNCBloxControl1ContextPopup(Sender: TObject; MousePos: TPoint; var Handled: Boolean);
+    procedure N2Click(Sender: TObject);
+    procedure SpeedButtonï€ë∂Click(Sender: TObject);
+    procedure SpeedButtonì«çûClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private êÈåæ }
+    posX, posY : integer;
+    selBox,selBox1,selBox2 : TTMSFNCBloxLinkableBlock;
+    selLink : TTMSFNCBloxDFDDataFlowLine;
+  public
+    { Public êÈåæ }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  self.selBox := Nil; self.selBox1 := Nil; self.selBox2 := Nil; self.selLink := Nil;
+end;
+
+procedure TForm1.TMSFNCBloxControl1ContextPopup(Sender: TObject;  MousePos: TPoint; var Handled: Boolean);
+var
+  mouse_p: TPoint;
+begin
+  GetCursorPos(mouse_p);
+  mouse_p := TMSFNCBloxControl1.ScreenToClient(mouse_p);
+  posX := mouse_P.x - 20;
+  posY := mouse_P.y - 20;
+  handled := False;
+end;
+
+procedure TForm1.N1Click(Sender: TObject);
+var
+ b: TTMSFNCBloxLinkableBlock;
+begin
+ b := TTMSFNCBloxLinkableBlock.Create;
+ b.Left := posX;
+ b.Top := posY;
+ b.Height := 100;
+ b.Width := 100;
+ TMSFNCBloxControl1.Blox.Add(b);
+end;
+
+procedure TForm1.N2Click(Sender: TObject);
+var
+ l: TTMSFNCBloxDFDDataFlowLine;
+begin
+ l := TTMSFNCBloxDFDDataFlowLine.Create;
+ l.Handles.items[0].OrX := posX;
+ l.Handles.items[0].orY := posY;
+ l.Handles.items[1].OrX := posX+100;
+ l.Handles.items[1].orY := posY+100;
+ TMSFNCBloxControl1.Blox.Add(l);
+end;
+
+procedure TForm1.SpeedButtonï€ë∂Click(Sender: TObject);
+var
+  fn : string;
+begin
+  if Not SaveDialog1.execute then exit;
+  fn := saveDialog1.FileName;
+  TMSFNCBloxControl1.savetofile(fn);
+end;
+
+procedure TForm1.SpeedButtonì«çûClick(Sender: TObject);
+var
+  fn : string;
+begin
+  if Not OpenDialog1.execute then exit;
+  fn := openDialog1.FileName;
+  TMSFNCBloxControl1.LoadFromFile(fn);
+end;
+
+end.
