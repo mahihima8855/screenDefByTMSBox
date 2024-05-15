@@ -1,0 +1,1 @@
+TMSFncBoxのlinkableBoxとDFDDataLineを使って画面遷移を記述。その結果のjsonをnode-Redの定義ファイルに変換してNode-Redで画面遷移を制御するための仕組み作り
