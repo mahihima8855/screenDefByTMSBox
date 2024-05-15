@@ -87,6 +87,7 @@ begin
   self.selBox := Nil; self.selBox1 := Nil; self.selBox2 := Nil; self.selLink := Nil;
 end;
 
+// 右クリック時のマウス位置
 procedure TForm1.TMSFNCBloxControl1ContextPopup(Sender: TObject;  MousePos: TPoint; var Handled: Boolean);
 var
   mouse_p: TPoint;
