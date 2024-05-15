@@ -1,4 +1,4 @@
-unit Unit1;
+﻿unit Unit1;
 
 interface
 
@@ -99,6 +99,7 @@ begin
   handled := False;
 end;
 
+// Boxの追加
 procedure TForm1.N1Click(Sender: TObject);
 var
  b: TTMSFNCBloxLinkableBlock;
