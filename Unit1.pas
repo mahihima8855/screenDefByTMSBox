@@ -81,6 +81,7 @@ implementation
 
 {$R *.dfm}
 
+// ‰Šú‰»
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   self.selBox := Nil; self.selBox1 := Nil; self.selBox2 := Nil; self.selLink := Nil;

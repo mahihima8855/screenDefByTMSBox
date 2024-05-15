@@ -19,9 +19,6 @@
     Height = 29
     Caption = 'ToolBar1'
     TabOrder = 0
-    ExplicitLeft = 368
-    ExplicitTop = 24
-    ExplicitWidth = 150
     object SpeedButton保存: TSpeedButton
       Left = 0
       Top = 0
@@ -48,9 +45,6 @@
     Height = 19
     Panels = <>
     SimplePanel = True
-    ExplicitLeft = 336
-    ExplicitTop = 376
-    ExplicitWidth = 0
   end
   object Panel1: TPanel
     Left = 0
@@ -59,9 +53,6 @@
     Height = 753
     Align = alClient
     TabOrder = 2
-    ExplicitTop = 28
-    ExplicitWidth = 981
-    ExplicitHeight = 677
     object Splitter1: TSplitter
       Left = 145
       Top = 1
@@ -77,8 +68,6 @@
       Height = 751
       Align = alLeft
       TabOrder = 0
-      ExplicitLeft = -2
-      ExplicitTop = -1
       object Splitter2: TSplitter
         Left = 1
         Top = 597
@@ -97,8 +86,6 @@
         ActivePage = TabSheet画面設定
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = -1
-        ExplicitTop = -2
         object TabSheet画面設定: TTabSheet
           Caption = #30011#38754#35373#23450
           object Label1: TLabel
@@ -247,8 +234,6 @@
       GroupHandleAppearance.RotCenter.Style = hhCrossedEllipse
       Interaction.ChangeTextWithDoubleClick = False
       OnElementMouseUp = TMSFNCBloxControl1ElementMouseUp
-      ExplicitLeft = 150
-      ExplicitTop = -4
     end
   end
   object PopupMenu1: TPopupMenu
